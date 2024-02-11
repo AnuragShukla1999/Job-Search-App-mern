@@ -1,10 +1,10 @@
 import express, { application } from 'express';
 import cors from 'cors';
-import { config } from 'dotenv';
+import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import fileUpload from 'express-fileupload';
-import { dbConnection } from './database/dbConnection';
-import { errorMiddleware } from './middlewares/error';
+import { dbConnection } from './database/dbConnection.js';
+import { errorMiddleware } from './middlewares/error.js';
 
 
 import userRouter from './routes/userRoutes.js';
@@ -13,7 +13,7 @@ import applicationRouter from './routes/applicationRoutes.js';
 
 
 const app = express();
-config({ path: "./config/config.env" });
+dotenv.config();
 
 
 app.use(

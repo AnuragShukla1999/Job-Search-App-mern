@@ -29,45 +29,6 @@ export const register = catchAsyncErrors(async (req, res, next) => {
 });
 
 
-
-// export const login = catchAsyncErrors(async (req, res, next) => {
-//     try {
-//         const { email, password, role } = req.body;
-
-//         if (!email || !password || !role) {
-//             return next(new ErrorHandler("Please provide email, password and role."));
-//         }
-
-//         const user = await User.findOne({ email }).select("+password");
-
-//         if (!user) {
-//             return next(new ErrorHandler("Invalid Email or Password.", 400));
-//         }
-
-//         const isPasswordMatched = await user.comparePassword(password);
-
-//         if (!isPasswordMatched) {
-//             return next(new ErrorHandler("Invalid Email Or Password.", 400));
-//         }
-
-//         if (user.role !== role) {
-//             return next(
-//                 new ErrorHandler(`User with provided email and ${role} not found!`, 404)
-//             );
-//         }
-
-//         sendToken(user, 201, res, "User Logged In!");
-//     } catch (error) {
-//         next(error)
-//     }
-// });
-
-
-
-
-
-
-
 export const login = async (req, res) => {
     try {
         const { email, password, role } = req.body;
@@ -98,8 +59,6 @@ export const login = async (req, res) => {
         return res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 };
-
-
 
 
 
